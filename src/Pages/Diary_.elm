@@ -107,7 +107,7 @@ view model =
             Success diary ->
                 Html.div []
                     [ Html.h1 [] [ Html.text diary.title ]
-                    , Html.text diary.publishedAt
+                    , Html.p [] [ Html.text (String.left 10 diary.publishedAt) ]
                     , Markdown.toHtmlWith
                         { githubFlavored = Nothing
                         , defaultHighlighting = Nothing
@@ -119,7 +119,7 @@ view model =
                     ]
 
             Loading ->
-                Html.text "読込中…"
+                Html.text "Loading..."
         , Html.br [] []
         , Html.a [ Html.Attributes.href "/" ] [ Html.text "記事一覧に戻る" ]
         ]

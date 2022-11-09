@@ -110,15 +110,16 @@ view model =
             Success articleinfolist ->
                 let
                     titles articleinfo =
-                        Html.div []
+                        Html.li []
                             [ Html.a
                                 [ Html.Attributes.href ("/" ++ articleinfo.id) ]
-                                [ Html.text (articleinfo.title ++ "\u{3000}" ++ articleinfo.publishedAt) ]
+                                [ Html.text (articleinfo.title ++ "\u{3000}" ++ String.left 10 articleinfo.publishedAt) ]
                             ]
                 in
-                Html.div [] (List.map titles articleinfolist)
+                Html.ul []
+                    (List.map titles articleinfolist)
 
             Loading ->
-                Html.text "読込中…"
+                Html.text "Loading..."
         ]
     }
